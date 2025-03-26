@@ -1,0 +1,325 @@
+.success-table {
+border-collapse: collapse;
+width: 100%;
+margin-top: 20px;
+}
+
+.success-table th, .success-table td {
+padding: 8px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+.success-table th {
+background-color: #4CAF50;
+color: white;
+}
+
+body {
+background-color: #f0f4f9;
+font-family: Arial, sans-serif;
+}
+
+table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+padding: 5px;
+}
+
+.action-buttons, .filter-container, #formLink, #loadingMessage, #fetchingMessage, #formNameContainer {
+display: none;
+margin-top: 10px;
+}
+
+/* Input container styles */
+.input-container {
+position: relative;
+width: auto;
+max-width: 500px;
+margin-bottom: 15px;
+width: 300px;
+flex-grow: 1;
+}
+
+/* Styles for all text input fields */
+input[type="text"] {
+width: 100%;
+padding: 16px 14px 8px;
+font-size: 16px;
+border: 2px solid #333333;
+border-radius: 4px;
+background-color: #f0f4f9;
+transition: border-color 0.3s, width 0.2s;
+border-radius: 2em;
+}
+
+input[type="text"]:focus {
+outline: none;
+border: 2px solid #1a73e8;
+}
+
+/* Floating label styles */
+.floating-label {
+position: absolute;
+pointer-events: none;
+left: 12px;
+top: 14px;
+transition: 0.2s ease all;
+color: #5f6368;
+font-size: 14px;
+background-color: #f0f4f9;
+padding: 0 4px;
+z-index: 1;
+border-radius: 2em;
+}
+
+input[type="text"]:focus ~ .floating-label,
+input[type="text"]:not(:placeholder-shown) ~ .floating-label {
+top: -2px;
+left: 12px;
+font-size: 12px;
+color: #1a73e8;
+}
+
+input[type="text"]:focus ~ .floating-label {
+color: #1a73e8;
+}
+
+input[type="text"]:not(:focus) ~ .floating-label {
+color: #5f6368;
+}
+
+input[type="text"]:focus::placeholder {
+color: transparent;
+}
+
+/* Button styles */
+button:not(.dropbtn, .select-button) {
+background-color: #1a73e8;
+border: none;
+color: white;
+padding: 5px 10px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 15px;
+margin: 4px 2px 10px 10px;
+cursor: pointer;
+border-radius: 4em;
+transition: 0.2s all ease-in-out;
+}
+
+button:not(.dropbtn, .select-button):hover {
+transform: translateY(-1px);
+background-color: #185abc;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:not(.dropbtn, .select-button):disabled {
+background-color: #ccc;
+color: #666;
+cursor: not-allowed;
+transform: none;
+box-shadow: none;
+}
+
+button:not(.dropbtn, .select-button):disabled:hover {
+background-color: #ccc;
+color: #666;
+transform: none;
+box-shadow: none;
+}
+
+/* Select and Unselect All buttons */
+.action-buttons .select-button {
+background-color: transparent;
+border: none;
+color: #1a73e8;
+padding: 5px 10px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+margin: 4px 2px;
+cursor: pointer;
+transition: background-color 0.3s;
+border-radius: 4em;
+}
+
+.action-buttons .select-button:hover {
+background-color: #c8c8c8;
+transform: none;
+box-shadow: none;
+}
+
+#generateButton {
+float: right;
+}
+
+/* Select and input styles */
+input[type="text"], select {
+padding: 8px;
+margin: 5px;
+border: 1px solid #ddd;
+border-radius: 4px;
+}
+
+#sheetUrl {
+width: 200px;
+min-width: 200px;
+transition: width 0.2s;
+padding: 5px;
+}
+
+.filter-item {
+margin-right: 10px;
+}
+
+/* Message styles */
+#loadingMessage, #fetchingMessage {
+color: #666;
+font-style: italic;
+}
+
+#messageContainer {
+margin-bottom: 20px;
+}
+
+/* Spinner styles */
+.spinner {
+border: 4px solid #f3f3f3;
+border-top: 4px solid #3498db;
+border-radius: 50%;
+width: 20px;
+height: 20px;
+animation: spin 1s linear infinite;
+display: inline-block;
+margin-left: 10px;
+vertical-align: middle;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+/* Table styles */
+#questionTable, #messageContainer table {
+width: 95%;
+margin: 20px auto;
+border-collapse: collapse;
+}
+
+#questionTable th, #questionTable td,
+#messageContainer th, #messageContainer td {
+border: none;
+border-bottom: 1px solid #ddd;
+padding: 10px;
+text-align: center;
+}
+
+#questionTable {
+background-color: white;
+}
+
+#questionTable th {
+background-color: #FFFEF2;
+font-weight: bold;
+}
+
+#messageContainer th {
+background-color: #FFCCCB;
+color: #8B0000;
+}
+
+#questionTable tr:nth-child(even),
+#messageContainer tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+
+#questionTable tr:nth-child(odd) {
+background-color: #ffffff;
+}
+
+#messageContainer tr:nth-child(odd) {
+background-color: #FFEFEF;
+}
+
+#messageContainer .success-table th {
+background-color: #d4edda;
+color: #155724;
+}
+
+#messageContainer .success-table tr:nth-child(even) {
+background-color: #e7f7e9;
+}
+
+#messageContainer .success-table tr:nth-child(odd) {
+background-color: #f1faee;
+}
+
+/* Dropdown styles */
+.dropdown {
+position: relative;
+display: inline-block;
+margin-right: 25px; /* Increased margin between dropdowns */
+margin-bottom: 10px; /* Add some vertical spacing */
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #ffffff;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+z-index: 1;
+border-radius: 8px;
+overflow: hidden;
+}
+
+.dropdown-content a {
+color: black;
+padding: 8px 12px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown-content a:hover {
+background-color: #f1f1f1;
+}
+
+/* Dropdown button */
+.dropbtn {
+background-color: #1a73e8;
+color: white;
+padding: 6px 12px;
+font-size: 14px;
+border: none;
+cursor: pointer;
+border-radius: 4px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: auto; /* Allow button to grow based on content */
+min-width: 120px; /* Set a minimum width */
+max-width: 200px; /* Set a maximum width */
+white-space: nowrap; /* Prevent text from wrapping */
+overflow: hidden; /* Hide overflowing text */
+text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+}
+
+.dropbtn:after {
+content: '\25BC';
+font-size: 10px;
+margin-left: 5px;
+flex-shrink: 0; /* Prevent the arrow from shrinking */
+}
+
+.dropbtn:hover {
+background-color: #185abc;
+}
+
+/* Show dropdown content when .show class is added */
+.dropdown-content.show {
+display: block;
+}

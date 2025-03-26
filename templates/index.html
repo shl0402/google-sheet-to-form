@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheet URL Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Enter Google Sheet URL</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form id="sheetForm" method="POST">
+        <div class="input-container">
+            <input type="text" id="sheetUrl" name="sheetUrl" placeholder=" " oninput="adjustWidth()" required>
+            <label for="sheetUrl" class="floating-label">Google Sheet URL</label>
+        </div>
+        <button type="submit" id="fetchButton">Fetch Sheet Data</button>
+        <div id="fetchingMessage">
+            Fetching sheet data... <div class="spinner"></div>
+        </div>
+    </form>
+    <div id="fetchingMessage" style="display: none;">
+        Fetching sheet data... <div class="spinner"></div>
+    </div>
+
+    <script>
+        function adjustWidth() {
+            // You can implement this function if needed
+        }
+
+        document.getElementById('sheetForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+            document.getElementById('fetchingMessage').style.display = 'block';
+            
+            fetch('/', {
+                method: 'POST',
+                body: new FormData(this),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('fetchingMessage').style.display = 'none';
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                document.getElementById('fetchingMessage').style.display = 'none';
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+2024-08-27 20:58:01,556 - INFO - logging in using static token
+2024-08-27 20:58:03,634 - INFO - Shard ID None has connected to Gateway (Session ID: 180c6c5885b5c30cdacad5a3ed228399).
+2024-08-27 20:58:07,429 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-27 20:58:07,784 - INFO - Role assignment message already exists. Updating it.
+2024-08-27 21:52:57,397 - INFO - Shard ID None session has been invalidated.
+2024-08-27 22:38:51,858 - INFO - Shard ID None session has been invalidated.
+2024-08-27 22:55:32,638 - INFO - Shard ID None session has been invalidated.
+2024-08-27 22:56:41,623 - INFO - Shard ID None session has been invalidated.
+2024-08-27 23:14:03,514 - INFO - Shard ID None session has been invalidated.
+2024-08-27 23:29:44,594 - INFO - Shard ID None session has been invalidated.
+2024-08-28 00:57:54,058 - INFO - Shard ID None session has been invalidated.
+2024-08-28 01:13:59,832 - INFO - Shard ID None session has been invalidated.
+2024-08-28 01:29:25,323 - INFO - Shard ID None session has been invalidated.
+2024-08-28 01:31:11,030 - INFO - Shard ID None session has been invalidated.
+2024-08-28 01:31:41,844 - INFO - Shard ID None has connected to Gateway (Session ID: d3b01297c652e0d0d08b86e8f7de6fcd).
+2024-08-28 01:31:45,680 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 01:31:45,990 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 02:09:37,249 - INFO - Shard ID None session has been invalidated.
+2024-08-28 02:14:15,920 - INFO - Shard ID None session has been invalidated.
+2024-08-28 02:16:30,966 - INFO - Shard ID None session has been invalidated.
+2024-08-28 02:23:41,350 - INFO - Shard ID None session has been invalidated.
+2024-08-28 02:32:08,526 - INFO - Shard ID None session has been invalidated.
+2024-08-28 03:28:48,816 - INFO - Shard ID None session has been invalidated.
+2024-08-28 04:41:26,807 - INFO - Shard ID None session has been invalidated.
+2024-08-28 04:58:11,630 - INFO - Shard ID None session has been invalidated.
+2024-08-28 05:15:33,014 - INFO - Shard ID None session has been invalidated.
+2024-08-28 05:32:39,023 - INFO - Shard ID None session has been invalidated.
+2024-08-28 05:47:46,930 - INFO - Shard ID None session has been invalidated.
+2024-08-28 05:47:52,962 - INFO - Shard ID None has connected to Gateway (Session ID: e2909a65bd806cb57e1ea7ca6f542a07).
+2024-08-28 06:03:27,876 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1026828411374678077.
+2024-08-28 06:20:13,507 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1117698552899059712.
+2024-08-28 06:36:50,090 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1166827155481702510.
+2024-08-28 06:36:50,767 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 06:37:05,404 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 07:08:09,843 - INFO - Shard ID None session has been invalidated.
+2024-08-28 07:11:46,298 - INFO - Shard ID None session has been invalidated.
+2024-08-28 07:11:52,425 - INFO - Shard ID None has connected to Gateway (Session ID: d2da9888921f8a822993611e0f556751).
+2024-08-28 07:11:56,397 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 07:11:56,918 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 07:58:43,041 - INFO - Shard ID None session has been invalidated.
+2024-08-28 08:22:02,185 - ERROR - Attempting a reconnect in 1.41s
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/tasks.py", line 447, in wait_for
+    return fut.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 805, in _ws_connect
+    resp = await self.request(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 905, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+aiohttp.client_exceptions.ServerDisconnectedError: Server disconnected
+2024-08-28 08:22:04,678 - INFO - Shard ID None session has been invalidated.
+2024-08-28 08:39:14,751 - INFO - Shard ID None session has been invalidated.
+2024-08-28 08:39:36,977 - INFO - Shard ID None has connected to Gateway (Session ID: c3afcb0c00bd7c5086a1185e049b5540).
+2024-08-28 08:39:40,773 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 08:39:41,159 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 08:39:50,347 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 388, in on_ready
+    await setup_roles_message()
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 209, in setup_roles_message
+    await message.add_reaction(emoji)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/message.py", line 1258, in add_reaction
+    await self._state.http.add_reaction(self.channel.id, self.id, emoji)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 638, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 900, in start
+    with self._timer:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/helpers.py", line 725, in __exit__
+    raise asyncio.TimeoutError from None
+asyncio.exceptions.TimeoutError
+2024-08-28 09:04:32,531 - INFO - Shard ID None session has been invalidated.
+2024-08-28 09:10:23,707 - INFO - Shard ID None session has been invalidated.
+2024-08-28 09:10:34,249 - INFO - Shard ID None has connected to Gateway (Session ID: a666238356c08a6a82e21c225b3582e6).
+2024-08-28 09:10:37,995 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 09:10:38,414 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 09:11:21,395 - WARNING - Can't keep up, shard ID None websocket is 29.7s behind.
+2024-08-28 09:13:46,127 - INFO - Shard ID None has successfully RESUMED session a666238356c08a6a82e21c225b3582e6.
+2024-08-28 09:17:23,565 - INFO - Shard ID None session has been invalidated.
+2024-08-28 09:20:31,323 - INFO - Shard ID None has connected to Gateway (Session ID: 4255d756f756d207662bb9519c151734).
+2024-08-28 09:20:35,086 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 10:29:30,039 - INFO - Shard ID None session has been invalidated.
+2024-08-28 10:47:19,985 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:02:27,117 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:02:41,786 - INFO - Shard ID None has connected to Gateway (Session ID: 59422343ddb4874c120cf565ebe14736).
+2024-08-28 11:02:45,664 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 11:02:46,179 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 11:19:56,931 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:20:03,042 - INFO - Shard ID None has connected to Gateway (Session ID: d4d7e5d4b22dba9f50f29afbe462c0b2).
+2024-08-28 11:20:06,847 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 388, in on_ready
+    await setup_roles_message()
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 209, in setup_roles_message
+    await message.add_reaction(emoji)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/message.py", line 1258, in add_reaction
+    await self._state.http.add_reaction(self.channel.id, self.id, emoji)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 638, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 900, in start
+    with self._timer:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/helpers.py", line 725, in __exit__
+    raise asyncio.TimeoutError from None
+asyncio.exceptions.TimeoutError
+2024-08-28 11:20:06,913 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 11:20:07,273 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 11:34:57,577 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:35:04,931 - INFO - Shard ID None has connected to Gateway (Session ID: 5cd5c7878fe8f81a561c3f578b192104).
+2024-08-28 11:35:08,798 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 11:37:45,371 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:38:17,310 - INFO - Shard ID None has connected to Gateway (Session ID: c3fcbf71d8803c7d6b80e6669e5e0b86).
+2024-08-28 11:40:55,091 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 11:40:55,550 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 388, in on_ready
+    await setup_roles_message()
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 203, in setup_roles_message
+    async for message in channel.history(limit=100):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/abc.py", line 1864, in history
+    data, state, limit = await strategy(retrieve, state, limit)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/abc.py", line 1806, in _before_strategy
+    data = await self._state.http.logs_from(channel.id, retrieve, before=before_id)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 638, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 900, in start
+    with self._timer:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/helpers.py", line 725, in __exit__
+    raise asyncio.TimeoutError from None
+asyncio.exceptions.TimeoutError
+2024-08-28 11:40:56,982 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:41:03,056 - INFO - Shard ID None has connected to Gateway (Session ID: fe3b5c42dc369284965287cc833452d3).
+2024-08-28 11:41:36,900 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 11:41:37,356 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 11:42:10,932 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 11:42:11,360 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 11:43:14,299 - WARNING - Can't keep up, shard ID None websocket is 18.0s behind.
+2024-08-28 11:44:07,917 - WARNING - Can't keep up, shard ID None websocket is 26.7s behind.
+2024-08-28 11:47:48,696 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:48:17,995 - INFO - Shard ID None has connected to Gateway (Session ID: d2aa78a369bba51d3bf5bb0147db0d73).
+2024-08-28 11:48:21,951 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 11:48:22,295 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 11:53:14,401 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:55:06,326 - INFO - Shard ID None session has been invalidated.
+2024-08-28 11:55:24,405 - INFO - Shard ID None has connected to Gateway (Session ID: ad78f7965b0d9770a177178dbddcf912).
+2024-08-28 11:55:28,232 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 11:55:28,888 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 12:03:49,226 - INFO - Shard ID None session has been invalidated.
+2024-08-28 12:28:53,431 - ERROR - Attempting a reconnect in 3.59s
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 805, in _ws_connect
+    resp = await self.request(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 905, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/tasks.py", line 458, in wait_for
+    fut.result()
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/tasks.py", line 460, in wait_for
+    raise exceptions.TimeoutError() from exc
+asyncio.exceptions.TimeoutError
+2024-08-28 12:28:57,067 - ERROR - Attempting a reconnect in 2.56s
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 855, in getaddrinfo
+    return await self.run_in_executor(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/tasks.py", line 447, in wait_for
+    return fut.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 805, in _ws_connect
+    resp = await self.request(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 562, in _request
+    conn = await self._connector.connect(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway.discord.gg:443 ssl:default [nodename nor servname provided, or not known]
+2024-08-28 12:30:22,235 - ERROR - Attempting a reconnect in 8.84s
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 855, in getaddrinfo
+    return await self.run_in_executor(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/tasks.py", line 447, in wait_for
+    return fut.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 805, in _ws_connect
+    resp = await self.request(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 562, in _request
+    conn = await self._connector.connect(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway.discord.gg:443 ssl:default [nodename nor servname provided, or not known]
+2024-08-28 12:30:31,898 - INFO - Shard ID None session has been invalidated.
+2024-08-28 12:30:38,147 - INFO - Shard ID None has connected to Gateway (Session ID: 459f37a92495d3a7ff4275f747298dc0).
+2024-08-28 12:30:42,726 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 12:30:43,170 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 12:33:03,303 - INFO - Shard ID None session has been invalidated.
+2024-08-28 12:33:09,531 - INFO - Shard ID None has connected to Gateway (Session ID: 5e6c534485118da963d719d3a27aedc5).
+2024-08-28 12:33:21,381 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1026828411374678077.
+2024-08-28 12:33:26,416 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1117698552899059712.
+2024-08-28 12:34:53,671 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 816317454896201728.
+2024-08-28 12:34:58,810 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1166827155481702510.
+2024-08-28 12:35:03,827 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1181961085813788693.
+2024-08-28 12:52:49,923 - WARNING - Shard ID 0 timed out waiting for chunks for guild_id 1261146184521875466.
+2024-08-28 12:52:49,997 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 12:52:49,999 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 855, in getaddrinfo
+    return await self.run_in_executor(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 388, in on_ready
+    await setup_roles_message()
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 203, in setup_roles_message
+    async for message in channel.history(limit=100):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/abc.py", line 1864, in history
+    data, state, limit = await strategy(retrieve, state, limit)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/abc.py", line 1806, in _before_strategy
+    data = await self._state.http.logs_from(channel.id, retrieve, before=before_id)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 638, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 562, in _request
+    conn = await self._connector.connect(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host discord.com:443 ssl:default [nodename nor servname provided, or not known]
+2024-08-28 13:27:48,818 - ERROR - Attempting a reconnect in 31.99s
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 855, in getaddrinfo
+    return await self.run_in_executor(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/tasks.py", line 447, in wait_for
+    return fut.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 805, in _ws_connect
+    resp = await self.request(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 562, in _request
+    conn = await self._connector.connect(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-d.discord.gg:443 ssl:default [nodename nor servname provided, or not known]
+2024-08-28 13:51:42,617 - ERROR - Attempting a reconnect in 32.47s
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 855, in getaddrinfo
+    return await self.run_in_executor(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/tasks.py", line 447, in wait_for
+    return fut.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 805, in _ws_connect
+    resp = await self.request(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 562, in _request
+    conn = await self._connector.connect(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-d.discord.gg:443 ssl:default [nodename nor servname provided, or not known]
+2024-08-28 13:52:16,720 - INFO - Shard ID None session has been invalidated.
+2024-08-28 13:52:22,934 - INFO - Shard ID None has connected to Gateway (Session ID: 8967dd655d05ebb7f217fa54401a8ef3).
+2024-08-28 13:52:27,327 - INFO - Setting up roles in channel: 📌｜roles (ID: 1261157962702127104)
+2024-08-28 13:52:27,890 - INFO - Role assignment message already exists. Updating it.
+2024-08-28 13:52:51,114 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 388, in on_ready
+    await setup_roles_message()
+  File "/Users/samuel/Documents/Programming/DC/caleb.py", line 207, in setup_roles_message
+    await message.edit(embed=create_role_embed())
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/message.py", line 2561, in edit
+    data = await self._state.http.edit_message(self.channel.id, self.id, params=params)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/discord/http.py", line 638, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 900, in start
+    with self._timer:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/helpers.py", line 725, in __exit__
+    raise asyncio.TimeoutError from None
+asyncio.exceptions.TimeoutError

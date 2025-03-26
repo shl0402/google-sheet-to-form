@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Questions</h1>
+        <div id="formNameContainer" class="input-container">
+            <input type="text" id="formName" placeholder=" ">
+            <label for="formName" class="floating-label">Google Form Name</label>
+        </div>
+        <div id="filterContainer" class="filter-container" style="display: none;"></div>
+        <div class="action-buttons">
+            <button onclick="selectAll()" class="select-button">Select All</button>
+            <button onclick="unselectAll()" class="select-button">Unselect All</button>
+            <button onclick="generateForm()" id="generateButton">Generate Form</button>
+        </div>
+        <div id="loadingMessage">
+            Generating quiz... (You may see the process by opening the form in your account) <div class="spinner"></div>
+        </div>
+        <table id="questionTable">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Question</th>
+                    <th>Answer Options</th>
+                    <th>Correct Answer</th>
+                    <th>Subject</th>
+                    <th>Difficulty</th>
+                    <th>Topic</th>
+                    <th>Subtopic</th>
+                    <th>Question ID</th>
+                    <th>Subject ID</th>
+                    <th>Topic ID</th>
+                    <th>Subtopic ID</th>
+                    <th>Time Needed</th>
+                </tr>
+            </thead>
+            <tbody id="questionTableBody">
+                <!-- Questions will be dynamically inserted here -->
+            </tbody>
+        </table>
+        <div id="formGenerationResult" style="display:none;">
+            <h3>Form Generation Results</h3>
+            <p>Form URL: <a id="formUrl" href="" target="_blank"></a></p>
+            <p>Total Questions Added: <span id="totalAdded"></span></p>
+            <p>Total Errors: <span id="totalErrors"></span></p>
+            
+            <h4>Successfully Added Questions</h4>
+            <table id="successTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Question ID</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            
+            <h4>Errors</h4>
+            <div id="errorContainer">
+            <table id="errorTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Question ID</th>
+                        <th>Error</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        // The questions data is passed from Flask to the template
+        var questionsData = {{ questions | tojson | safe }};
+        const CATEGORIES_TO_FILTER = ['Subject', 'Topic', 'Subtopic', 'Difficulty'];
+        let categoryHierarchy = {
+            subjects: new Set(),
+            topics: new Set(),
+            subtopics: new Set(),
+            subjectToTopic: {},
+            topicToSubtopic: {}
+        };
+
+// Declare this at the top of your script, outside any function
+const selectedQuestions = new Map();
+
+function showError(error) {
+    alert('Error: ' + error);
+}
+
+function selectAll() {
+    var checkboxes = document.querySelectorAll('#questionTableBody input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+        if (!checkbox.checked) {
+            checkbox.checked = true;
+            updateSelectedQuestions(checkbox);
+        }
+    });
+}
+
+function unselectAll() {
+    var checkboxes = document.querySelectorAll('#questionTableBody input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            checkbox.checked = false;
+            updateSelectedQuestions(checkbox);
+        }
+    });
+}
+
+function updateSelectedQuestions(checkbox, index) {
+    var row = checkbox.closest('tr');
+    var cells = row.cells;
+    var questionId = cells[8].textContent; // Question ID is in the 9th column (index 8)
+    
+    if (checkbox.checked) {
+        var questionData = {
+            question: cells[1].textContent,
+            options: cells[2].textContent,
+            correctAnswer: cells[3].textContent,
+            subject: cells[4].textContent,
+            difficulty: cells[5].textContent,
+            topic: cells[6].textContent,
+            subtopic: cells[7].textContent,
+            questionId: cells[8].textContent,
+            subjectId: cells[9].textContent,
+            topicId: cells[10].textContent,
+            subtopicId: cells[11].textContent,
+            timeNeeded: cells[12].textContent
+        };
+        selectedQuestions.set(questionId, questionData);
+    } else {
+        selectedQuestions.delete(questionId);
+    }
+
+    //debugging
+    console.log(selectedQuestions)
+}
+
+function displayTable(data, errorList) {
+    var container = document.getElementById('tableContainer');
+    var table = '<table id="questionTable"><thead><tr><th>Select</th>';
+
+    // Add headers
+    for (var i = 0; i < data[0].length; i++) {
+        table += '<th>' + data[0][i] + '</th>';
+    }
+    table += '</tr></thead><tbody>';
+
+    // Add rows
+    for (var i = 1; i < data.length; i++) {
+        var rowClass = errorList && errorList.includes(i) ? 'error-row' : (i % 2 === 0 ? 'even-row' : 'odd-row');
+        table += '<tr class="' + rowClass + '">';
+        var uniqueId = data[i][0]; // Assuming first column is a unique identifier
+        var isChecked = selectedQuestions.has(uniqueId) ? 'checked' : '';
+        table += '<td><input type="checkbox" class="row-select" id="row-' + i + '" ' + isChecked + ' onchange="updateSelectedQuestions(this, ' + i + ')"></td>';
+        for (var j = 0; j < data[i].length; j++) {
+            table += '<td>' + data[i][j] + '</td>';
+        }
+        table += '</tr>';
+    }
+    table += '</tbody></table>';
+
+    container.innerHTML = table;
+    document.getElementById('fetchButton').disabled = false;
+    document.getElementById('actionButtons').style.display = 'block';
+}
+
+// Modify the populateQuestionTable function
+function populateQuestionTable(questions) {
+    const tableBody = document.getElementById('questionTableBody');
+    tableBody.innerHTML = ''; // Clear existing content
+
+    questions.forEach((question, index) => {
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+            <td><input type="checkbox" onchange="updateSelectedQuestions(this, ${index})"></td>
+            <td>${question.question || ''}</td>
+            <td>${question.options ? question.options.join(' || ') : ''}</td>
+            <td>${question.correct_answer || ''}</td>
+            <td>${question.subject || ''}</td>
+            <td>${question.difficulty || ''}</td>
+            <td>${question.topic || ''}</td>
+            <td>${question.subtopic || ''}</td>
+            <td>${question['question id'] || ''}</td>
+            <td>${question['subject id'] || ''}</td>
+            <td>${question['topic id'] || ''}</td>
+            <td>${question['subtopic id'] || ''}</td>
+            <td>${question['time needed'] || ''}</td>
+        `;
+
+        // Check if this question was previously selected
+        const questionId = question['question id'];
+        if (selectedQuestions.has(questionId)) {
+            row.querySelector('input[type="checkbox"]').checked = true;
+        }
+    });
+
+    // Show the table
+    document.querySelector('table').style.display = 'table';
+}
+
+
+        // Function to create filter dropdowns
+        function createFilterDropdowns() {
+            const filterContainer = document.getElementById('filterContainer');
+            filterContainer.innerHTML = '';
+
+            CATEGORIES_TO_FILTER.forEach(category => {
+                const filterItem = document.createElement('div');
+                filterItem.className = 'dropdown filter-item';
+                filterItem.innerHTML = `
+                    <button class="dropbtn" data-category="${category}">${category}</button>
+                    <div class="dropdown-content" id="${category.toLowerCase()}Dropdown"></div>
+                `;
+                filterContainer.appendChild(filterItem);
+
+                const dropbtn = filterItem.querySelector('.dropbtn');
+                const dropdownContent = filterItem.querySelector('.dropdown-content');
+
+                dropbtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdownContent.classList.toggle('show');
+                });
+
+                dropdownContent.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A') {
+                        e.preventDefault();
+                        const selectedValue = e.target.getAttribute('data-value');
+                        dropbtn.textContent = selectedValue ? capitalizeFirstLetter(selectedValue) : category;
+                        dropdownContent.classList.remove('show');
+                        updateFilters(category, selectedValue);
+                    }
+                });
+
+                // Populate dropdown options
+                if (category === 'Subject') {
+                    updateDropdown(category, Array.from(categoryHierarchy.subjects));
+                } else if (category === 'Topic') {
+                    updateDropdown(category, Array.from(categoryHierarchy.topics));
+                } else if (category === 'Subtopic') {
+                    updateDropdown(category, Array.from(categoryHierarchy.subtopics));
+                } else {
+                    const uniqueValues = new Set(questionsData.map(q => q[category.toLowerCase()]));
+                    updateDropdown(category, Array.from(uniqueValues));
+                }
+            });
+
+            filterContainer.style.display = 'block';
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.matches('.dropbtn')) {
+                    const dropdowns = document.getElementsByClassName('dropdown-content');
+                    for (let i = 0; i < dropdowns.length; i++) {
+                        if (dropdowns[i].classList.contains('show')) {
+                            dropdowns[i].classList.remove('show');
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateFilters(changedCategory, selectedValue) {
+    const subjectBtn = document.querySelector('.dropbtn[data-category="Subject"]');
+    const topicBtn = document.querySelector('.dropbtn[data-category="Topic"]');
+    const subtopicBtn = document.querySelector('.dropbtn[data-category="Subtopic"]');
+
+    if (changedCategory === 'Subject') {
+        if (!selectedValue || selectedValue === 'subject') {
+            subjectBtn.textContent = 'Subject';
+            topicBtn.textContent = 'Topic';
+            subtopicBtn.textContent = 'Subtopic';
+            updateDropdown('Subject', Array.from(categoryHierarchy.subjects));
+            updateDropdown('Topic', Array.from(categoryHierarchy.topics));
+            updateDropdown('Subtopic', Array.from(categoryHierarchy.subtopics));
+        } else {
+            const topicsForSubject = categoryHierarchy.subjectToTopic[selectedValue] || [];
+            updateDropdown('Topic', Array.from(topicsForSubject));
+
+            const allSubtopicsForSubject = new Set();
+            topicsForSubject.forEach(topic => {
+                const subtopics = categoryHierarchy.topicToSubtopic[topic] || [];
+                subtopics.forEach(subtopic => allSubtopicsForSubject.add(subtopic));
+            });
+            updateDropdown('Subtopic', Array.from(allSubtopicsForSubject));
+
+            topicBtn.textContent = 'Topic';
+            subtopicBtn.textContent = 'Subtopic';
+        }
+    } else if (changedCategory === 'Topic') {
+        if (!selectedValue || selectedValue === 'topic') {
+            topicBtn.textContent = 'Topic';
+            subtopicBtn.textContent = 'Subtopic';
+            if (subjectBtn.textContent !== 'Subject') {
+                const selectedSubject = subjectBtn.textContent.toLowerCase();
+                updateDropdown('Topic', Array.from(categoryHierarchy.subjectToTopic[selectedSubject] || []));
+                const allSubtopicsForSubject = new Set();
+                (categoryHierarchy.subjectToTopic[selectedSubject] || []).forEach(topic => {
+                    const subtopics = categoryHierarchy.topicToSubtopic[topic] || [];
+                    subtopics.forEach(subtopic => allSubtopicsForSubject.add(subtopic));
+                });
+                updateDropdown('Subtopic', Array.from(allSubtopicsForSubject));
+            } else {
+                updateDropdown('Topic', Array.from(categoryHierarchy.topics));
+                updateDropdown('Subtopic', Array.from(categoryHierarchy.subtopics));
+            }
+        } else {
+            updateDropdown('Subtopic', Array.from(categoryHierarchy.topicToSubtopic[selectedValue] || []));
+            subtopicBtn.textContent = 'Subtopic';
+
+            const parentSubject = Object.keys(categoryHierarchy.subjectToTopic).find(subject =>
+                categoryHierarchy.subjectToTopic[subject].has(selectedValue)
+            );
+            if (parentSubject) {
+                subjectBtn.textContent = capitalizeFirstLetter(parentSubject);
+                updateDropdown('Subject', Array.from(categoryHierarchy.subjects));
+            }
+        }
+    } else if (changedCategory === 'Subtopic') {
+        if (!selectedValue || selectedValue === 'subtopic') {
+            subtopicBtn.textContent = 'Subtopic';
+            if (topicBtn.textContent !== 'Topic') {
+                const selectedTopic = topicBtn.textContent.toLowerCase();
+                updateDropdown('Subtopic', Array.from(categoryHierarchy.topicToSubtopic[selectedTopic] || []));
+            } else if (subjectBtn.textContent !== 'Subject') {
+                const selectedSubject = subjectBtn.textContent.toLowerCase();
+                updateDropdown('Topic', Array.from(categoryHierarchy.subjectToTopic[selectedSubject] || []));
+                const allSubtopicsForSubject = new Set();
+                (categoryHierarchy.subjectToTopic[selectedSubject] || []).forEach(topic => {
+                    const subtopics = categoryHierarchy.topicToSubtopic[topic] || [];
+                    subtopics.forEach(subtopic => allSubtopicsForSubject.add(subtopic));
+                });
+                updateDropdown('Subtopic', Array.from(allSubtopicsForSubject));
+            } else {
+                updateDropdown('Subtopic', Array.from(categoryHierarchy.subtopics));
+            }
+        } else {
+            let parentTopic = null;
+            let parentSubject = null;
+
+            for (const [topic, subtopics] of Object.entries(categoryHierarchy.topicToSubtopic)) {
+                if (subtopics.has(selectedValue)) {
+                    parentTopic = topic;
+                    break;
+                }
+            }
+
+            if (parentTopic) {
+                topicBtn.textContent = capitalizeFirstLetter(parentTopic);
+                updateDropdown('Topic', Array.from(categoryHierarchy.topics));
+
+                for (const [subject, topics] of Object.entries(categoryHierarchy.subjectToTopic)) {
+                    if (topics.has(parentTopic)) {
+                        parentSubject = subject;
+                        break;
+                    }
+                }
+
+                if (parentSubject) {
+                    subjectBtn.textContent = capitalizeFirstLetter(parentSubject);
+                    updateDropdown('Subject', Array.from(categoryHierarchy.subjects));
+                    // Update Topic dropdown with only topics for the selected subject
+                    updateDropdown('Topic', Array.from(categoryHierarchy.subjectToTopic[parentSubject] || []));
+                }
+            }
+        }
+    }
+
+    applyFilters();
+}
+
+        function updateDropdown(category, options) {
+            const dropdown = document.getElementById(`${category.toLowerCase()}Dropdown`);
+            if (dropdown) {
+                dropdown.innerHTML = `
+                    <a href="#" data-value="">All</a>
+                    ${Array.from(options).sort().map(value => `<a href="#" data-value="${value}">${capitalizeFirstLetter(value)}</a>`).join('')}
+                `;
+            }
+        }
+
+        function applyFilters() {
+            const filteredData = questionsData.filter(question => {
+                return CATEGORIES_TO_FILTER.every(category => {
+                    const dropbtn = document.querySelector(`.filter-item .dropbtn[data-category="${category}"]`);
+                    if (!dropbtn) return true; // Skip if dropdown not found
+                    const filterValue = dropbtn.textContent.toLowerCase();
+                    if (filterValue === category.toLowerCase()) return true; // "All" is selected
+                    return question[category.toLowerCase()].toString().toLowerCase() === filterValue;
+                });
+            });
+
+            populateQuestionTable(filteredData);
+        }
+
+        function capitalizeFirstLetter(string) {
+            if (string && typeof string === 'string') {
+                return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+            }
+            return string;
+        }
+
+        // Initialize category hierarchy
+        function initializeCategoryHierarchy() {
+            questionsData.forEach(question => {
+                categoryHierarchy.subjects.add(question.subject);
+                categoryHierarchy.topics.add(question.topic);
+                categoryHierarchy.subtopics.add(question.subtopic);
+
+                if (!categoryHierarchy.subjectToTopic[question.subject]) {
+                    categoryHierarchy.subjectToTopic[question.subject] = new Set();
+                }
+                categoryHierarchy.subjectToTopic[question.subject].add(question.topic);
+
+                if (!categoryHierarchy.topicToSubtopic[question.topic]) {
+                    categoryHierarchy.topicToSubtopic[question.topic] = new Set();
+                }
+                categoryHierarchy.topicToSubtopic[question.topic].add(question.subtopic);
+            });
+        }
+
+        // Display the questions when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCategoryHierarchy();
+            populateQuestionTable(questionsData);
+            createFilterDropdowns();
+
+            // Display the form name input and action buttons
+            document.getElementById('formNameContainer').style.display = 'block';
+            document.querySelector('.action-buttons').style.display = 'block';
+            document.querySelector('.filter-container').style.display = 'block';
+        });
+
+
+        function generateForm() {
+            var formName = document.getElementById('formName').value;
+            
+            if (selectedQuestions.size === 0) {
+                alert('Please select at least one question.');
+                return;
+            }
+
+            // Show loading message
+            document.getElementById('loadingMessage').style.display = 'flex';
+
+            // Disable all buttons
+            disableButtons(true);
+
+            // Convert the Map to an array of objects
+            var selectedQuestionsArray = Array.from(selectedQuestions.values());
+
+            fetch('/generate_form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    form_name: formName,
+                    selected_questions: selectedQuestionsArray
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+            // Populate success table
+            var successTable = document.getElementById('successTable');
+            var headerRow = successTable.insertRow();
+            ['Form Name', 'Questions', 'Status'].forEach(headerText => {
+                var headerCell = headerRow.insertCell();
+                headerCell.textContent = headerText;
+                headerCell.style.fontWeight = 'bold';
+            });
+
+            var dataRow = successTable.insertRow();
+            var formNameCell = dataRow.insertCell();
+            formNameCell.textContent = data.form_name;
+            var questionsCell = dataRow.insertCell();
+            questionsCell.textContent = data.questions_count;
+            var statusCell = dataRow.insertCell();
+            statusCell.textContent = 'Generated Successfully';
+
+            // Show success table
+            document.getElementById('successTable').style.display = 'block';
+            document.getElementById('errorTable').style.display = 'block';
+        } else {
+            showError(data.message);
+        }
+    })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                showError('An error occurred while processing your request.');
+            })
+            .finally(() => {
+                // Hide loading message and enable buttons regardless of the outcome
+                document.getElementById('loadingMessage').style.display = 'none';
+                disableButtons(false);
+            });
+        }
+
+function disableButtons(disable) {
+var buttons = document.getElementsByTagName('button');
+for (var i = 0; i < buttons.length; i++) {
+buttons[i].disabled = disable;
+}
+}
+
+    </script>
+</body>
+</html>
